@@ -36,14 +36,15 @@ commands.touch = () => errors.noWriteAccess;
 commands.rm = () => errors.noWriteAccess;
 
 commands.ls = directory => {
-  if (directory === '..' || directory === '~') {
+  if (directory === '..' || directory === '~' || directory === '-a') {
     return systemData['happy_hacker'];
   } else if (directory === 'Projects' || directory === 'Skills') {
-    return systemData[directory];
+    let contents = systemData[directory]
+    return `<p>${contents.join('&nbsp&nbsp&nbsp')}</p>`
   }
 
-  return systemData[getDirectory()];
-};
+  return systemData[getDirectory()]; // breaks when in Projects/Skills
+}
 
 commands.help = () => systemData.help;
 
