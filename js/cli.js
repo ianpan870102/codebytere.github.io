@@ -9,8 +9,8 @@ const errors = {
 
 const struct = {
   happy_hacker: ['about', 'resume', 'contact'],
-  projects: ['nodemessage', 'map', 'dotify', 'slack_automation'],
-  skills: ['proficient', 'familiar', 'learning'],
+  Projects: ['nodemessage', 'map', 'dotify', 'slack_automation'],
+  Skills: ['proficient', 'familiar', 'learning'],
 };
 
 const commands = {};
