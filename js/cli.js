@@ -15,7 +15,7 @@ const struct = {
 
 const commands = {};
 let systemData = {};
-const happy_hackerPath = 'Users/happy_hacker';
+const happy_hackerPath = '/Users/happy_hacker';
 
 const getDirectory = () => localStorage.directory;
 const setDirectory = dir => {
