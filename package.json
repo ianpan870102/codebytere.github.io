@@ -1,0 +1,23 @@
+{
+  "name": "terminal-cli-website",
+  "version": "1.0.0",
+  "description": "An interactive command line interface that allows you to learn about me by navigating around a terminal emulator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianpan870102/terminal-cli-website.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianpan870102/terminal-cli-website/issues"
+  },
+  "homepage": "https://github.com/ianpan870102/terminal-cli-website#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "lite-server": "^2.5.4"
+  }
+}
