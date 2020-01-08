@@ -1,10 +1,10 @@
 /* global $, localStorage, Shell */
 
 const errors = {
-  invalidDirectory: 'Error: not a valid directory',
-  noWriteAccess: 'Error: you do not have write access to this directory',
-  fileNotFound: 'Error: file not found in current directory',
-  fileNotSpecified: 'Error: you did not specify a file',
+  invalidDirectory: 'cd: no such file or directory: ',
+  noWriteAccess: 'Warning: console cowboys read only',
+  fileNotFound: 'cat: no such file or directory: ',
+  fileNotSpecified: 'Error: filename argument required',
 };
 
 const struct = {
@@ -29,40 +29,35 @@ const registerFullscreenToggle = () => {
   });
 };
 
-// create new directory in current directory
 commands.mkdir = () => errors.noWriteAccess;
 
-// create new directory in current directory
 commands.touch = () => errors.noWriteAccess;
 
-// remove file from current directory
 commands.rm = () => errors.noWriteAccess;
 
-// view contents of specified directory
 commands.ls = directory => {
   if (directory === '..' || directory === '~') {
     return systemData['happy_hacker'];
+  } else if (directory === 'Projects' || directory === 'Skills') {
+    return systemData[directory];
   }
+
   return systemData[getDirectory()];
 };
 
-// view list of possible commands
 commands.help = () => systemData.help;
 
-// display current path
 commands.pwd = () => {
   const dir = getDirectory();
   return dir === 'happy_hacker' ? happy_hackerPath : `${happy_hackerPath}/${dir}`;
 };
 
-// see command history
 commands.history = () => {
   let history = localStorage.history;
   history = history ? Object.values(JSON.parse(history)) : [];
   return `<p>${history.join('<br>')}</p>`;
 };
 
-// move into specified directory
 commands.cd = newDirectory => {
   const currDir = getDirectory();
   const dirs = Object.keys(struct);
@@ -73,12 +68,11 @@ commands.cd = newDirectory => {
   } else if (newDir === '' || newDir === '~' || (newDir === '..' && dirs.includes(currDir))) {
     setDirectory('happy_hacker');
   } else {
-    return errors.invalidDirectory;
+    return errors.invalidDirectory + newDir;
   }
   return null;
 };
 
-// display contents of specified file
 commands.cat = filename => {
   if (!filename) return errors.fileNotSpecified;
 
@@ -89,7 +83,7 @@ commands.cat = filename => {
     return systemData[fileKey];
   }
 
-  return errors.fileNotFound;
+  return errors.fileNotFound + filename;
 };
 
 // initialize cli

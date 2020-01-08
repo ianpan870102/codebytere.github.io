@@ -101,7 +101,7 @@ class Shell {
             .last()
             .html(localStorage.directory);
         } else {
-          this.term.innerHTML += 'Error: command not recognized';
+          this.term.innerHTML += 'Error: command not found: ' + cmd;
           this.resetPrompt(term, prompt);
         }
         evt.preventDefault();
