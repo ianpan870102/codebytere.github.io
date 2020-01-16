@@ -39,12 +39,12 @@ commands.ls = directory => {
   if (directory === '..' || directory === '~' || directory === '-a') {
     return systemData['happy_hacker'];
   } else if (directory === 'Projects' || directory === 'Skills') {
-    let contents = systemData[directory]
-    return `<p>${contents.join('&nbsp&nbsp&nbsp')}</p>`
+    let contents = systemData[directory];
+    return `<p>${contents.join('&nbsp&nbsp&nbsp')}</p>`;
   }
 
   return systemData[getDirectory()]; // breaks when in Projects/Skills
-}
+};
 
 commands.help = () => systemData.help;
 
