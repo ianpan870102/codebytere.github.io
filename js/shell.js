@@ -155,10 +155,12 @@ class Shell {
   }
 
   clearConsole() {
+    const getDirectory = () => localStorage.directory;
+    const dir = getDirectory();
     $('#terminal').html(
       `<p class="hidden">
           <span class="prompt">
-            <span class="happy_hacker">happy_hacker</span>
+            <span class="happy_hacker">${dir}</span>
             <span class="tick">$</span>
           </span>
           <span contenteditable="true" class="input"></span>
