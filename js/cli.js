@@ -2,6 +2,7 @@
 
 const errors = {
   invalidDirectory: 'cd: no such file or directory: ',
+  invalidOptionOrDirectory: 'ls: no such option or directory: ',
   noWriteAccess: 'Warning: console cowboys read only',
   fileNotFound: 'cat: no such file or directory: ',
   fileNotSpecified: 'Error: filename argument required',
@@ -36,15 +37,26 @@ commands.touch = () => errors.noWriteAccess;
 commands.rm = () => errors.noWriteAccess;
 
 commands.ls = directory => {
+  const currDir = getDirectory();
+  directory = directory ? directory.trim() : '';
   if (directory === '..' || directory === '~') {
     return systemData['happy_hacker'];
-  } else if (directory === 'Projects' || directory === '../Projects') {
-    return systemData['Projects'];
-  } else if (directory === 'Skills' || directory === '../Skills') {
-    return systemData['Skills'];
+  } else if (
+    (currDir === 'happy_hacker' && directory === 'Projects') ||
+    (currDir === 'happy_hacker' && directory === 'Skills') ||
+    (currDir !== 'happy_hacker' && directory === '../Projects') ||
+    (currDir !== 'happy_hacker' && directory === '../Skills')
+  ) {
+    if (directory.substring(0, 3) === '../') {
+      return systemData[directory.substring(3)];
+    } else {
+      return systemData[directory];
+    }
+  } else if (directory === '' || directory === '-a' || directory === 'l' || directory === '-la') {
+    return systemData[getDirectory()];
   }
 
-  return systemData[getDirectory()]; // breaks when in Projects/Skills
+  return errors.invalidOptionOrDirectory + directory;
 };
 
 commands.help = () => systemData.help;
