@@ -36,15 +36,16 @@ commands.touch = () => errors.noWriteAccess;
 commands.rm = () => errors.noWriteAccess;
 
 commands.ls = directory => {
-  if (directory === '..' || directory === '~' || directory === '-a') {
+  if (directory === '..' || directory === '~') {
     return systemData['happy_hacker'];
-  } else if (directory === 'Projects' || directory === 'Skills') {
-    let contents = systemData[directory]
-    return `<p>${contents.join('&nbsp&nbsp&nbsp')}</p>`
+  } else if (directory === 'Projects' || directory === '../Projects') {
+    return systemData['Projects'];
+  } else if (directory === 'Skills' || directory === '../Skills') {
+    return systemData['Skills'];
   }
 
   return systemData[getDirectory()]; // breaks when in Projects/Skills
-}
+};
 
 commands.help = () => systemData.help;
 
@@ -64,8 +65,15 @@ commands.cd = newDirectory => {
   const dirs = Object.keys(struct);
   const newDir = newDirectory ? newDirectory.trim() : '';
 
-  if (dirs.includes(newDir) && currDir !== newDir) {
-    setDirectory(newDir);
+  if (
+    (dirs.includes(newDir) && currDir === 'happy_hacker') ||
+    ((newDir === '../Projects' || newDir === '../Skills') && currDir !== 'happy_hacker')
+  ) {
+    if (newDir.substring(0, 3) === '../') {
+      setDirectory(newDir.substring(3));
+    } else {
+      setDirectory(newDir);
+    }
   } else if (newDir === '' || newDir === '~' || (newDir === '..' && dirs.includes(currDir))) {
     setDirectory('happy_hacker');
   } else {

@@ -11,6 +11,6 @@
   "slack_automation": "<div><h4>Slack Automation</h4><p>An application that automates signups to a slack group.</p><ul><li>Ideal for communities, where members have different email domains</li><li>Allows for connection to Airtable, with collection of data fields</li></ul><a class='blue' target='_blank' href='https://www.github.com/codebytere/slack-automation'>Source Code</a><a class='blue' target='_blank' href='https://www.sfbayinterns2017.herokuapp.com'>Demo</a></div>",
   "help": "<div> <ul> <li><strong>ls</strong> - show files in current directory</li><li><strong>cat FILENAME</strong> - display FILENAME in window</li><li><strong>cd DIRECTORY</strong> - move into DIRECTORY, or just 'cd' to return to home</li><li><strong>history</strong> - see your command history</li><li><strong>clear</strong> - clear current window<li><strong>pwd</strong> - display current directory</li></ul></div>",
   "happy_hacker": "<p>about.txt &nbsp&nbsp <span class='dir'>Projects</span> &nbsp&nbsp <span class='dir'>Skills</span> &nbsp&nbsp contact.txt &nbsp&nbsp resume.txt<br></p>",
-  "Projects": ["yay-evil-emacs.txt", "eKYC.txt", "react_learning_platform.txt"],
-  "Skills": ["proficient.txt", "familiar.txt"]
+  "Projects": "<p> nodemessage.txt &nbsp&nbsp slack_automation.txt &nbsp&nbsp map.txt &nbsp&nbsp dotify.txt</p>",
+  "Skills": "<p>proficient.txt &nbsp&nbsp familiar.txt &nbsp&nbsp learning.txt </p>"
 }
