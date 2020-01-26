@@ -43,7 +43,9 @@ class Shell {
             .last()
             .html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
           // Prevents undefined index
-          if (localStorage.historyIndex !== 0) localStorage.historyIndex -= 1;
+          if (localStorage.historyIndex !== 0) {
+            localStorage.historyIndex -= 1;
+          }
         } else if (key === keyDown) {
           if (localStorage.inHistory && localStorage.historyIndex < history.length) {
             let ret;

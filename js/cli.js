@@ -11,7 +11,7 @@ const errors = {
 const struct = {
   happy_hacker: ['about', 'resume', 'contact'],
   Projects: ['nodemessage', 'map', 'dotify', 'slack_automation'],
-  Skills: ['proficient', 'familiar', 'learning'],
+  Skills: ['languages', 'frameworks'],
 };
 
 const commands = {};
@@ -95,7 +95,9 @@ commands.cd = newDirectory => {
 };
 
 commands.cat = filename => {
-  if (!filename) return errors.fileNotSpecified;
+  if (!filename) {
+    return errors.fileNotSpecified;
+  }
 
   const dir = getDirectory();
   const fileKey = filename.split('.')[0];
